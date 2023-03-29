@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HungerHeads">
+    <output-path>$PROJECT_DIR$/out/artifacts/HungerHeads</output-path>
+    <root id="archive" name="HungerHeads.jar">
+      <element id="module-output" name="HungerHeads (2)" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/tr7zw/item-nbt-api-plugin/2.10.0/item-nbt-api-plugin-2.10.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
