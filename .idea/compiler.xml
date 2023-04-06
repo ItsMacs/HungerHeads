@@ -11,7 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="HungerHeads (1)" target="1.5" />
-      <module name="HungerHeads (2)" target="1.8" />
+      <module name="HungerHeads (2)" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>

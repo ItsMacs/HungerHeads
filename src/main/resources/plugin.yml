@@ -2,3 +2,9 @@ name: HungerHeads
 version: '${project.version}'
 main: eu.maxpi.fiverr.hungerheads.HungerHeads
 api-version: 1.19
+
+commands:
+  addhead:
+    description: Addhead
+  reloadheads:
+    description: Reload
