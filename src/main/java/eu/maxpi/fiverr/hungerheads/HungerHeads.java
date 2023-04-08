@@ -1,7 +1,6 @@
 package eu.maxpi.fiverr.hungerheads;
 
-import eu.maxpi.fiverr.hungerheads.commands.AddHeadCMD;
-import eu.maxpi.fiverr.hungerheads.commands.ReloadHeadsCMD;
+import eu.maxpi.fiverr.hungerheads.commands.HungerHeadsCMD;
 import eu.maxpi.fiverr.hungerheads.events.onHeadUsage;
 import eu.maxpi.fiverr.hungerheads.utils.PluginLoader;
 import org.bukkit.Bukkit;
@@ -28,8 +27,7 @@ public final class HungerHeads extends JavaPlugin {
     }
 
     private void loadCommands(){
-        Objects.requireNonNull(getCommand("reloadheads")).setExecutor(new ReloadHeadsCMD());
-        Objects.requireNonNull(getCommand("addhead")).setExecutor(new AddHeadCMD());
+        Objects.requireNonNull(getCommand("hungerheads")).setExecutor(new HungerHeadsCMD());
     }
 
     private void loadEvents(){

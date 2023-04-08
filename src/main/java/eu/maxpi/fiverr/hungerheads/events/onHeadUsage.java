@@ -21,6 +21,8 @@ public class onHeadUsage implements Listener {
 
     @EventHandler
     public void headUsage(PlayerInteractEvent event){
+        if(event.getPlayer().getFoodLevel() >= 20) return;
+
         if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 
         if(event.getClickedBlock() == null) return;
