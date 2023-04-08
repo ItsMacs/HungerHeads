@@ -15,6 +15,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.util.Vector;
 
 public class onHeadUsage implements Listener {
 
@@ -26,14 +27,16 @@ public class onHeadUsage implements Listener {
         if(!event.getClickedBlock().getType().name().contains("PLAYER")) return;
 
         Skull s = (Skull)event.getClickedBlock().getState();
-        String value = s.getPersistentDataContainer().getOrDefault(new NamespacedKey(HungerHeads.getInstance(), "headhunger"), PersistentDataType.STRING, "");
+        if(s.getOwnerProfile() == null) return;
+
+        String value = s.getOwnerProfile().getUniqueId().toString();
 
         if(!PluginLoader.data.containsKey(value)) return;
 
         event.getClickedBlock().setType(Material.AIR);
 
         event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_PLAYER_BURP, 1, 1);
-        event.getPlayer().getWorld().spawnParticle(Particle.VILLAGER_HAPPY, event.getClickedBlock().getLocation(), 3);
+        event.getPlayer().getWorld().spawnParticle(Particle.VILLAGER_HAPPY, event.getClickedBlock().getLocation().add(Vector.getRandom().normalize().multiply(0.5)), 3);
         event.getPlayer().setFoodLevel(event.getPlayer().getFoodLevel() + PluginLoader.data.get(value));
     }
 

@@ -2,11 +2,13 @@ package eu.maxpi.fiverr.hungerheads.commands;
 
 import de.tr7zw.nbtapi.NBTItem;
 import eu.maxpi.fiverr.hungerheads.utils.PluginLoader;
+import org.bukkit.block.Skull;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 
 public class AddHeadCMD implements CommandExecutor {
     @Override
@@ -38,9 +40,15 @@ public class AddHeadCMD implements CommandExecutor {
         }
 
 
-        NBTItem i = new NBTItem(item);
-        String value = i.getCompound("SkullOwner").getCompound("Properties").getCompoundList("textures").get(0).getString("Value");
+        if(!(item.getItemMeta() instanceof SkullMeta meta)){
+            sender.sendMessage("§cYou need to keep a valid item in your main hand");
+            return true;
+        }
 
+        NBTItem i = new NBTItem(item);
+        String value = i.getCompound("SkullOwner").getUUID("Id").toString();
+
+        System.out.println(value);
         PluginLoader.data.put(value, it);
         p.sendMessage("§eHead added!");
         return true;
