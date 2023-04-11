@@ -54,8 +54,10 @@ public class HungerHeadsCMD implements CommandExecutor {
                 NBTItem i = new NBTItem(item);
                 String value = i.getCompound("SkullOwner").getUUID("Id").toString();
 
-                System.out.println(value);
+                PluginLoader.load();
+
                 PluginLoader.data.put(value, it);
+                PluginLoader.headNames.put(value, meta.getDisplayName());
                 p.sendMessage("§eHead added!");
 
                 PluginLoader.save();
@@ -64,6 +66,8 @@ public class HungerHeadsCMD implements CommandExecutor {
 
             case "reload" -> {
                 PluginLoader.data.clear();
+                PluginLoader.headNames.clear();
+                
                 PluginLoader.load();
 
                 sender.sendMessage("§aData reloaded!");
